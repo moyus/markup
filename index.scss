@@ -1,4 +1,271 @@
-/* This is the overall wrapper, it should be treated as the `body` section. */
+$grey-darkest: #161616;
+$grey-dark: #252525;
+$grey-base: #888;
+$grey-light: #d8d8d8;
+$grey-lightest: #e4e4e3;
+$link-color: #7872ff;
+$size-base: 16px;
+
+@mixin clean() {
+  >*:first-child {
+    margin-top: 0;
+  }
+  >*:last-child {
+    margin-bottom: 0;
+  }
+}
+
+//
+// Wrapper, it should be treated as the `body` section
+//
 .markup {
-  // @TODO
+  color: $grey-dark;
+  font-size: $size-base;
+  line-height: 1.8;
+  font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Helvetica, sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  &,
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+}
+
+//
+// Heading
+// #heading 1, ##heading 2
+//
+h1, h2, h3, h4, h5, h6 {
+  color: $grey-dark;
+  font-weight: 500;
+  margin: (2 * $size-base) 0 $size-base 0;
+  line-height: 1.2;
+  tt, code {
+    font-size: inherit;
+  }
+}
+
+h1 {
+  text-align: center;
+  font-size: 2 * $size-base;
+  margin: (3 * $size-base) 0;
+}
+
+h2 {
+  font-size: (1.5 * $size-base);
+  padding-bottom: (0.3 * $size-base);
+  border-bottom: 1px solid $grey-light;
+}
+
+h3 {
+  font-size: (1.25 * $size-base);
+}
+
+h4 {
+  font-size: (1.125 * $size-base);
+}
+
+h5 {
+  font-size: $size-base;
+}
+
+h6 {
+  color: $grey-base;
+  font-size: $size-base;
+}
+
+//
+// Paragraph
+//
+p {
+  margin: 0 0 $size-base 0;
+}
+
+//
+// Blockquote
+// > Lorem ipsum dolor sit amet.
+//
+blockquote {
+  border-left: 3px solid $grey-darkest;
+  padding: (0.5 * $size-base) $size-base;
+  margin: (2 * $size-base) 0;
+  font-style: italic;
+  @include clean;
+}
+
+//
+// Strong
+// **lorem**
+//
+b,
+strong {
+  font-weight: bold;
+}
+
+//
+// Emphasis
+// *lorem**
+//
+em {
+  font-style: italic;
+}
+
+//
+// Underline
+// <u>lorem</u>
+//
+u {
+  text-decoration: underline;
+}
+
+
+ins,
+mark {
+  background: #ffa;
+}
+
+//
+// Strike
+// ~~lorem~~
+//
+del {
+  color: $grey-base;
+  text-decoration: line-through;
+}
+
+sup,
+sub {
+  font-size: 75%;
+  line-height: 0;
+  left: 0.1em;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sup {
+  top: -0.5em;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+hr {
+  display: block;
+  padding: 0;
+  margin: $size-base 0;
+  height: 0;
+  border: 0;
+  border-top: 1px solid $grey-light;
+  box-sizing: content-box;
+}
+
+//
+// image
+// ![img](src)
+//
+img {
+  display: block;
+  margin: (1.5 * $size-base) auto;
+  max-width: 100%;
+  height: auto;
+}
+
+//
+// Table
+//
+table {
+  width: 100%;
+  padding: 0;
+  margin: $size-base 0;
+  border-collapse: collapse;
+
+  th, td {
+    text-align: left;
+    padding: $size-base (0.5 * $size-base);
+    border: 1px solid $grey-light;
+    @include clean;
+  }
+
+  thead th,
+  tfoot th {
+    background-color: $grey-lightest;
+  }
+
+}
+
+//
+// List
+//
+ul, ol {
+  margin: 0 0 $size-base 0;
+  padding: 0 0 0 2em;
+  li {
+    @include clean;
+  }
+}
+
+ul {
+  list-style: disc;
+}
+
+ol {
+  list-style: decimal;
+}
+
+//
+// Link
+// [lorem](http://www.xxx.xx)
+//
+a {
+  color: $link-color;
+  text-decoration: underline;
+}
+
+//
+// Code
+//
+pre,
+code,
+kbd,
+samp {
+  line-height: 1.5;
+  font-size: $size-base;
+  font-family: "Source Code Pro", "Hack", "Monaco", "Inconsolata", monospace;
+  -moz-osx-font-smoothing: auto;
+  -webkit-font-smoothing: auto;
+}
+
+// `lorem`
+code {
+  border-radius: 3px;
+  padding: .25em .5em;
+  background: $grey-lightest;
+}
+
+// ```
+// lorem
+// ```
+pre {
+  padding: $size-base;
+  margin: $size-base 0;
+  border-radius: 3px;
+  border: 1px solid $grey-light;
+  color: $grey-dark;
+  font-size: $size-base;
+  line-height: 1.5;
+  background: $grey-lightest;
+  overflow: auto;
+  @include clean;
+
+  code {
+    color: inherit;
+    font-size: inherit;
+    padding: 0;
+    border-radius: 0;
+    white-space: pre-wrap;
+    background: transparent;
+  }
 }
