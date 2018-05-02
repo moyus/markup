@@ -1,9 +1,9 @@
 $grey-darkest: #161616;
-$grey-dark: #252525;
-$grey-base: #888;
+$grey-dark: #333; // #252525;
+$grey-base: #676767;
 $grey-light: #d8d8d8;
-$grey-lightest: #e4e4e3;
-$link-color: #7872ff;
+$grey-lightest: #f8f8f8;
+$link-color: #4183c4;
 $size-base: 16px;
 
 @mixin clean() {
@@ -18,13 +18,15 @@ $size-base: 16px;
 //
 // Wrapper, it should be treated as the `body` section
 //
-.markup {
+.markup,
+.markdown-here-wrapper {
   color: $grey-dark;
   font-size: $size-base;
   line-height: 1.8;
-  font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Helvetica, sans-serif;
+  font-family: "PingFang SC", "Hiragino Sans GB", "Helvetica Neue", Helvetica, sans-serif;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
   &,
   *,
   *::before,
@@ -54,7 +56,7 @@ h1 {
 }
 
 h2 {
-  font-size: (1.5 * $size-base);
+  font-size: (1.375 * $size-base);
   padding-bottom: (0.3 * $size-base);
   border-bottom: 1px solid $grey-light;
 }
@@ -69,11 +71,13 @@ h4 {
 
 h5 {
   font-size: $size-base;
+  margin-bottom: 0;
 }
 
 h6 {
   color: $grey-base;
   font-size: $size-base;
+  margin-bottom: 0;
 }
 
 //
@@ -87,10 +91,11 @@ p {
 // Blockquote
 // > Lorem ipsum dolor sit amet.
 //
-blockquote {
-  border-left: 3px solid $grey-darkest;
-  padding: (0.5 * $size-base) $size-base;
+blockquote, q {
+  border-left: 4px solid $grey-darkest;
+  padding: (0.5 * $size-base) (1.5 * $size-base);
   margin: (2 * $size-base) 0;
+  color: $grey-base;
   font-style: italic;
   @include clean;
 }
@@ -155,7 +160,7 @@ sub {
 hr {
   display: block;
   padding: 0;
-  margin: $size-base 0;
+  margin: (2 * $size-base) 0;
   height: 0;
   border: 0;
   border-top: 1px solid $grey-light;
@@ -181,17 +186,37 @@ table {
   padding: 0;
   margin: $size-base 0;
   border-collapse: collapse;
+  border-spacing: 0;
+  border: 0;
+  font-size: 1em;
+  font: inherit;
 
   th, td {
     text-align: left;
-    padding: $size-base (0.5 * $size-base);
+    font-size: 1em;
+    padding: 0.5em 1em;
+    margin: 0;
     border: 1px solid $grey-light;
     @include clean;
   }
 
   thead th,
   tfoot th {
+    font-weight: bold;
     background-color: $grey-lightest;
+  }
+
+  tr {
+    background-color: white;
+    &:nth-child(2n) {
+      background-color: #F8F8F8;
+    }
+  }
+
+  tbody {
+    margin: 0;
+    padding: 0;
+    border: 0;
   }
 
 }
@@ -240,32 +265,35 @@ samp {
 
 // `lorem`
 code {
+  display: inline;
   border-radius: 3px;
   padding: .25em .5em;
+  margin: 0 0.15em;
   background: $grey-lightest;
+  white-space: pre-wrap;
 }
 
 // ```
 // lorem
 // ```
 pre {
-  padding: $size-base;
+  padding: 0;
   margin: $size-base 0;
-  border-radius: 3px;
-  border: 1px solid $grey-light;
-  color: $grey-dark;
-  font-size: $size-base;
-  line-height: 1.5;
-  background: $grey-lightest;
   overflow: auto;
+  -ms-overflow-style: scrollbar;
   @include clean;
 
   code {
+    display: block;
     color: inherit;
     font-size: inherit;
-    padding: 0;
+    padding: $size-base;
+    margin: 0;
     border-radius: 0;
+    border: 1px solid $grey-light;
     white-space: pre-wrap;
-    background: transparent;
+    background: $grey-lightest;
+    white-space: pre;
+    overflow: auto;
   }
 }
